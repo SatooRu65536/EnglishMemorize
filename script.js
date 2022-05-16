@@ -4,6 +4,7 @@ const cbx = document.getElementById('cbx')
 const random = document.getElementById('random')
 const number = document.getElementById('number')
 const num = document.getElementById('num')
+const memo = document.getElementById('memo')
 
 //頭おかしい
 const words = {
@@ -192,6 +193,7 @@ function change() {
 
   canswer.innerText = null
   num.innerText = null
+  memo.innerText = null
 }
 
 function check() {
