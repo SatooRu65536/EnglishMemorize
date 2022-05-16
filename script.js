@@ -9,7 +9,7 @@ const memo = document.getElementById('memo')
 //頭おかしい
 const words = {
   'artificial': "人工",
-  'intelligece': "知能",
+  'intelligence': "知能",
   'artificially': "人工的な",
   'software': "ソフトウェア",
   'system': "システム",
