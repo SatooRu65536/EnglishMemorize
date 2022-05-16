@@ -1,5 +1,6 @@
 body {
     padding: 10%;
+    padding-top: 5%;
     background-color: #eeeeee;
 }
 
@@ -10,6 +11,11 @@ main {
 #word,
 #canswer {
     font-size: 50px;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+#num {
+    margin-top: 0;
 }
 
 #range {

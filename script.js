@@ -3,6 +3,7 @@ const canswer = document.getElementById('canswer')
 const cbx = document.getElementById('cbx')
 const random = document.getElementById('random')
 const number = document.getElementById('number')
+const num = document.getElementById('num')
 
 //頭おかしい
 const words = {
@@ -159,7 +160,7 @@ function change() {
     i = Math.floor(Math.random() * words_len)
   } else {
     i += 1
-    if (i >= words_len){
+    if (i >= words_len) {
       i = 0
     }
   }
@@ -190,6 +191,7 @@ function change() {
   }
 
   canswer.innerText = null
+  num.innerText = null
 }
 
 function check() {
@@ -198,9 +200,21 @@ function check() {
   if (past) {
     console.log('2- checkedだよ');
     canswer.innerText = words_val[i]
-
+    num_disp()
   } else {
     console.log('2- checkedじゃないよ');
     canswer.innerText = words_key[i]
+    num_disp()
   }
+}
+
+function num_disp(){
+  if (i < 23) num.innerText = 'Part9-1 (' + i + ')'
+  else if (i < 36) num.innerText = 'Part9-2 (' + i + ')'
+  else if (i < 51) num.innerText = 'Part9-3 (' + i + ')'
+  else if (i < 64) num.innerText = 'Part9-4 (' + i + ')'
+  else if (i < 78) num.innerText = 'Part1-1 (' + i + ')'
+  else if (i < 92) num.innerText = 'Part1-2 (' + i + ')'
+  else if (i < 108) num.innerText = 'Part1-3 (' + i + ')'
+  else if (i < 121) num.innerText = 'Part1-4 (' + i + ')'
 }
