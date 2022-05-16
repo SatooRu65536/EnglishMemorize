@@ -1,4 +1,3 @@
-#9-1
 artificial
 intelligece
 artificially
@@ -16,22 +15,17 @@ refrigerator
 capacity
 usage
 develop
-
 tend to 'do' ~
 home electronics
 help 'O' 'V(原)'
 spam mail
 be limited to ~
-
-
-#9-2
 advance
 suppose
 recognize
 characteristic
 distinguish
 process
-
 it is believed that ~
 want 'O' to 'do'
 in the past
@@ -39,9 +33,6 @@ on "one"'s own
 how to 'do'
 distinguish 'A' from 'B'
 the way 'S' 'V'
-
-
-#9-3
 automatic
 driving
 traffic
@@ -57,9 +48,6 @@ tiring
 activity
 sound
 bright
-
-
-#9-3
 present
 exceed
 describe
@@ -69,14 +57,10 @@ avoid
 potential
 risk
 beneficial
-
 spread into ~
 at ~ pace
 no longer ~
 pay attention to ~
-
-
-#1-1
 emperor
 penguin
 centimeter
@@ -90,11 +74,7 @@ survive
 fascinating
 instructive
 Antarctica
-
 up to ~
-
-
-#1-2
 collective
 behave
 collectively
@@ -102,7 +82,6 @@ freezing
 huddling
 huddle
 rotate
-
 see 'O' 'V(過分)'
 in a group
 for instance
@@ -110,9 +89,6 @@ in cooperation
 get close to ~
 take turns 'V(進)'
 be peculiar to ~
-
-
-#1-3
 behind
 hatch
 nutritious
@@ -122,7 +98,6 @@ feed
 strength
 literally
 sacrifice
-
 keep 'O' 'C'
 lay an egg
 go out to ~
@@ -130,9 +105,6 @@ for weeks
 out of ~
 at last
 use up
-
-
-#1-4
 hesitate
 edge
 ice
@@ -142,7 +114,6 @@ killer whale
 eventually
 brave
 confirm
-
 hear of ~
 see 'O' 'V(現分)'
 dive off ~
