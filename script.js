@@ -167,7 +167,7 @@ function change() {
 
   if (n > 0 && n < words_len + 1) {
     console.log('number ok');
-    i = n - 1
+    i = n
     number.value = null
   } else if (n) {
     console.log('number 不適切');
