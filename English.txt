@@ -103,12 +103,12 @@ huddling
 huddle
 rotate
 
-see 'O' '動(過分)'
+see 'O' 'V(過分)'
 in a group
 for instance
 in cooperation
 get close to ~
-take turns '動(進)'
+take turns 'V(進)'
 be peculiar to ~
 
 
@@ -133,3 +133,17 @@ use up
 
 
 #1-4
+hesitate
+edge
+ice
+predator
+seal
+killer whale
+eventually
+brave
+confirm
+
+hear of ~
+see 'O' 'V(現分)'
+dive off ~
+try out ~
