@@ -1,0 +1,20 @@
+body {
+    padding: 10%;
+    background-color: #eeeeee;
+}
+
+main {
+    height: 300px;
+}
+
+#word,
+#canswer {
+    font-size: 50px;
+}
+
+#range {
+    margin-top: 20px;
+}
+.range {
+    margin: 0;
+}
