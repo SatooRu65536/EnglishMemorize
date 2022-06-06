@@ -8,6 +8,11 @@ const memo = document.getElementById('memo')
 
 //頭おかしい
 const words = {
+  "": ""
+}
+
+
+const words_old' = {
   'artificial': "人工",
   'intelligence': "知能",
   'artificially': "人工的な",
@@ -129,6 +134,8 @@ const words = {
   "dive off ~": "〜から飛び込む",
   "try out ~": "〜を試してみる"
 }
+
+
 let words_len = 0
 let words_key = []
 let words_val = []
