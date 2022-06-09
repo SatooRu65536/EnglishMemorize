@@ -25,7 +25,7 @@ const words = {
   "energy drink": "エナジードリンク",
   "not only A but also B": "Aだけではなく、Bもまた",
   "pain reliver": "鎮痛剤",
-  "chocolate bar": "チョコレート",
+  "chocolate bar": "板チョコレート",
   "consume": "摂取（消費）する",
   "unhealthy": "健康に悪い",
   "typically": "一般的に",
