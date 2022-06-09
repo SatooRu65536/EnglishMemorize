@@ -8,7 +8,9 @@ const memo = document.getElementById('memo')
 
 //頭おかしい
 const words = {
-  "": ""
+  "awake": "目が覚めて",
+  "alert": "用心深い",
+  "caffeine": "カフェイン"
 }
 
 
