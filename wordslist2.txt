@@ -27,13 +27,13 @@ cafe
 ceremony
 儀式
 energy drink
-
-not only ~ but also ~
-
+エナジードリンク
+not only A but also B
+Aだけではなく、Bもまた
 pain reliver
-
+鎮痛剤
 chocolate bar
-
+チョコレート
 consume
 摂取（消費）する
 unhealthy
@@ -59,61 +59,62 @@ bone
 proof
 証拠
 at one's best
-
+最良の状態で
 regularly
-
+定期的に
 depen
-
+依存
 negative
-
+良くない
 headache
-
+頭痛
 reduce
-
+を減らす
 despite
-
+にも関わらず
 concern
-
+懸念
 general
-
+一般的な
 moderation
-
+適度
 milligram
-
+ミリグラム
 a number of ~
-
+多くの
 depend on ~
-
+に依存する
 soft drink
-
+ソフトドリンク
 in moderation
-
+適度に
 recent
-
+最近の
 suggest
-
+示唆する
 ease
-
+を和らげる
 muscle
-
+筋肉
 contain
-
+を含む
 illness
-
+病気
 including
-
+を含めて
 reaction
-
+反応
 temporary
-
+一時的な
 properly
-
+適切に
 fight against ~
-
+と闘う
 a number of ~
-
+多くの〜
 in addition
-
+加えて
 it is true (that) ~, but ...
-
+確かに（本当に）
 This is why ~
+こういうわけで〜
