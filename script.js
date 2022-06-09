@@ -85,6 +85,7 @@ const words = {
   "a handful of ~": "一握りの",
   "medical school": "医学校",
   "manage to 'do'": "なんとか〜する",
+  "in spite of ~": "〜にも関わらず",
   "outstanding": "傑出した",
   "athlete": "スポーツ選手",
   "schoolarship": "奨学金",
@@ -345,12 +346,12 @@ function check() {
 }
 
 function num_disp() {
-  if (i < 23) num.innerText = 'Part9-1 (' + i + ')'
-  else if (i < 36) num.innerText = 'Part9-2 (' + i + ')'
-  else if (i < 51) num.innerText = 'Part9-3 (' + i + ')'
-  else if (i < 64) num.innerText = 'Part9-4 (' + i + ')'
-  else if (i < 78) num.innerText = 'Part1-1 (' + i + ')'
-  else if (i < 92) num.innerText = 'Part1-2 (' + i + ')'
-  else if (i < 108) num.innerText = 'Part1-3 (' + i + ')'
-  else if (i < 121) num.innerText = 'Part1-4 (' + i + ')'
+  if (i < 19) num.innerText = 'Part2-1 (' + i + ')'
+  else if (i < 32) num.innerText = 'Part2-2 (' + i + ')'
+  else if (i < 46) num.innerText = 'Part2-3 (' + i + ')'
+  else if (i < 61) num.innerText = 'Part2-4 (' + i + ')'
+  else if (i < 79) num.innerText = 'Part3-1 (' + i + ')'
+  else if (i < 93) num.innerText = 'Part3-2 (' + i + ')'
+  else if (i < 110) num.innerText = 'Part3-3 (' + i + ')'
+  else if (i < 130) num.innerText = 'Part3-4 (' + i + ')'
 }

@@ -152,6 +152,8 @@ medical school
 医学校
 manage to 'do'
 なんとか〜する
+in spite of ~
+〜にも関わらず
 outstanding
 傑出した
 athlete
