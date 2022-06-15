@@ -4,10 +4,10 @@ const cbx = document.getElementById('cbx')
 const random = document.getElementById('random')
 const number = document.getElementById('number')
 const num = document.getElementById('num')
-const memo = document.getElementById('memo')
 
 //頭おかしい
 const words = {
+  "2-1": "-----",
   "awake": "用心深い",
   "caffein": "カフェイン",
   "burst": "突発",
@@ -26,6 +26,7 @@ const words = {
   "not only A but also B": "Aだけではなく、Bもまた",
   "pain reliver": "鎮痛剤",
   "chocolate bar": "板チョコレート",
+  "2-2": "-----",
   "consume": "摂取（消費）する",
   "unhealthy": "健康に悪い",
   "typically": "一般的に",
@@ -39,6 +40,7 @@ const words = {
   "bone": "骨",
   "proof": "証拠",
   "at one's best": "最良の状態で",
+  "2-3": "-----",
   "regularly": "定期的に",
   "depen": "依存",
   "negative": "良くない",
@@ -49,10 +51,10 @@ const words = {
   "general": "一般的な",
   "moderation": "適度",
   "milligram": "ミリグラム",
-  "a number of ~": "多くの",
   "depend on ~": "に依存する",
   "soft drink": "ソフトドリンク",
   "in moderation": "適度に",
+  "2-4": "-----",
   "recent": "最近の",
   "suggest": "示唆する",
   "ease": "を和らげる",
@@ -68,6 +70,7 @@ const words = {
   "in addition": "加えて",
   "it is true (that) ~, but ...": "確かに（本当に）",
   "This is why ~": "こういうわけで〜",
+  "3-1": "-----",
   "tuberculosis": "結核",
   "worse": "より悪い",
   "possibility": "可能性",
@@ -86,6 +89,7 @@ const words = {
   "medical school": "医学校",
   "manage to 'do'": "なんとか〜する",
   "in spite of ~": "〜にも関わらず",
+  "3-2": "-----",
   "outstanding": "傑出した",
   "athlete": "スポーツ選手",
   "schoolarship": "奨学金",
@@ -100,6 +104,7 @@ const words = {
   "fresh": "新鮮な",
   "As a result": "その結果",
   "far away": "遠くで",
+  "3-3": "-----",
   "solid": "個体の",
   "cell": "細胞",
   "plasma": "血しょう",
@@ -117,6 +122,7 @@ const words = {
   "blood bank": "血液銀行",
   "instead of": "の代わりに",
   "the American Bed Cross": "アメリカ赤十字社",
+  "3-4": "-----",
   "donate": "を提供する",
   "dislike": "を嫌う",
   "resign": "辞職する",
@@ -136,7 +142,7 @@ const words = {
   "resign from ~": "を辞職する",
   "in protest": "抗議して",
   "on ~ grounds": "の理由で",
-  "civil rights": "公民権"
+  "civil rights": "公民権",
 }
 
 
@@ -264,20 +270,14 @@ const words_old = {
 }
 
 
+let punctuation = []
 let words_len = 0
 let words_key = []
 let words_val = []
 let now = true
 let past = now
 let i = -1
-
-for (let i in words) {
-  words_len++
-  words_key.push(i)
-  words_val.push(words[i])
-}
-
-touch()
+let c = 0
 
 function touch() {
   if (now) {
@@ -293,34 +293,35 @@ function change() {
   n = Number(number.value)
 
   if (random.checked) {
+    $.cookie("random", 'true');
     i = Math.floor(Math.random() * words_len)
   } else {
+    $.cookie("random", 'false');
     i += 1
+    $.cookie("last", i);
     if (i >= words_len) {
       i = 0
     }
   }
 
   if (n > 0 && n < words_len + 1) {
-    console.log('number ok');
     i = n
     number.value = null
   } else if (n) {
-    console.log('number 不適切');
     number.value = '1 ~ ' + String(words_len)
   } else {
     number.value = null
   }
 
   if (cbx.checked) {
+    $.cookie("cbx", 'true');
     past = true
-    console.log('1- checkedだよ');
 
     let w = words_key[i]
     word.innerText = w
   } else {
+    $.cookie("cbx", 'false');
     past = false
-    console.log('1- checkedじゃないよ');
 
     let w = words_val[i]
     word.innerText = w
@@ -328,30 +329,74 @@ function change() {
 
   canswer.innerText = null
   num.innerText = null
-  memo.innerText = null
 }
 
 function check() {
   canswer.innerText = words_val[i]
 
   if (past) {
-    console.log('2- checkedだよ');
     canswer.innerText = words_val[i]
     num_disp()
   } else {
-    console.log('2- checkedじゃないよ');
     canswer.innerText = words_key[i]
     num_disp()
   }
 }
 
 function num_disp() {
-  if (i < 19) num.innerText = 'Part2-1 (' + i + ')'
-  else if (i < 32) num.innerText = 'Part2-2 (' + i + ')'
-  else if (i < 46) num.innerText = 'Part2-3 (' + i + ')'
-  else if (i < 61) num.innerText = 'Part2-4 (' + i + ')'
-  else if (i < 79) num.innerText = 'Part3-1 (' + i + ')'
-  else if (i < 93) num.innerText = 'Part3-2 (' + i + ')'
-  else if (i < 110) num.innerText = 'Part3-3 (' + i + ')'
-  else if (i < 130) num.innerText = 'Part3-4 (' + i + ')'
+  if (i < punctuation[1]) num.innerText = 'Part2-1 (' + i + ')'
+  else if (i < punctuation[2]) num.innerText = 'Part2-2 (' + i + ')'
+  else if (i < punctuation[3]) num.innerText = 'Part2-3 (' + i + ')'
+  else if (i < punctuation[4]) num.innerText = 'Part2-4 (' + i + ')'
+  else if (i < punctuation[5]) num.innerText = 'Part3-1 (' + i + ')'
+  else if (i < punctuation[6]) num.innerText = 'Part3-2 (' + i + ')'
+  else if (i < punctuation[7]) num.innerText = 'Part3-3 (' + i + ')'
+  else num.innerText = 'Part3-4 (' + i + ')'
 }
+
+function first() {
+  const condition_cbx = $.cookie("cbx");
+  const condition_random = $.cookie("random");
+  if (condition_cbx == 'true')
+    cbx.checked = true
+  if (condition_random == 'true')
+    random.checked = true
+  i = Number($.cookie("last"));
+
+  const range_id = document.getElementById('range')
+  let new_element = document.createElement('p');
+
+  for (let i in words) {
+    if (words[i] == '-----') {
+      try {
+        let range_c = document.getElementsByClassName('range_c')
+        let range_len = range_c.length - 1;
+
+        let text_content = range_c[range_len].textContent
+        range_c[range_len].innerHTML = text_content + String(words_len - 1)
+      } catch (e) {
+        console.log(e);
+      }
+
+      new_element = document.createElement('p');
+      punctuation.push(words_len)
+      new_element.textContent = `Part ${i} → ${words_len} 〜`;
+      new_element.className = 'range_c';
+      range_id.appendChild(new_element);
+
+    } else {
+      words_len++
+      words_key.push(i)
+      words_val.push(words[i])
+    }
+  }
+
+  let range_c = document.getElementsByClassName('range_c')
+  let range_len = range_c.length - 1;
+  let text_content = range_c[range_len].textContent
+  range_c[range_len].innerHTML = text_content + String(words_len - 1)
+
+  touch()
+}
+
+first()
