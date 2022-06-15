@@ -409,6 +409,7 @@ function first() {
   let range_len = range_c.length - 1;
   let text_content = range_c[range_len].textContent
   range_c[range_len].innerHTML = text_content + String(words_len - 1)
+  console.log('ok');
 
   touch()
 }
