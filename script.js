@@ -390,73 +390,6 @@ function num_disp() {
   else num.innerText = 'Part3-4 (' + j + ')'
 }
 
-function first() {
-  const condition_cbx = $.cookie("cbx");
-  const condition_random = $.cookie("random");
-  if (condition_cbx == 'true')
-    cbx.checked = true
-  if (condition_random == 'true')
-    random.checked = true
-  const cookie_i = $.cookie("last")
-  if (cookie_i) i = Number(cookie_i);
-
-  const range_id = document.getElementById('range')
-  const is_memorized = document.getElementById('is_memorized')
-  const memorized_c = document.getElementsByClassName('memorized');
-  let new_element = document.createElement('div');
-  let condition = '';
-
-  new_element.textContent = words[0];
-  new_element.className = 'lesson';
-  is_memorized.appendChild(new_element);
-
-  for (let w in words) {
-    if (words[w] == '-----') {
-      try {
-        let range_c = document.getElementsByClassName('range_c')
-        let range_len = range_c.length - 1;
-
-        let text_content = range_c[range_len].textContent
-        range_c[range_len].innerHTML = text_content + String(words_len - 1)
-      } catch (e) {
-        console.log(e);
-      }
-
-      new_element = document.createElement('p');
-      punctuation.push(words_len)
-      new_element.textContent = `Part ${w} → ${words_len} 〜`;
-      new_element.className = 'range_c';
-      range_id.appendChild(new_element);
-
-      new_element = document.createElement('h4');
-      new_element.innerHTML = w;
-      is_memorized.appendChild(new_element);
-
-    } else {
-      condition = $.cookie(`${w}`);
-      if (condition == 'true') {
-        memorized_c[words_len].checked = true
-      }
-
-      words_len++
-      new_element = document.createElement('div');
-      new_element.innerHTML = `<label for="${w}" onclick="ud_memorize_cbx(${words_len})"><input type="checkbox" class="memorized" id="${w}" />${words_len}: ${w} (${words[w]})</label>`
-      is_memorized.appendChild(new_element);
-
-      words_key.push(w)
-      words_val.push(words[w])
-    }
-  }
-
-
-  let range_c = document.getElementsByClassName('range_c')
-  let range_len = range_c.length - 1;
-  let text_content = range_c[range_len].textContent
-  range_c[range_len].innerHTML = text_content + String(words_len - 1)
-
-  touch()
-}
-
 function memorized_all_click() {
   const m_label = document.getElementById('memorized_all_label')
   const c = memorized_all.checked
@@ -506,6 +439,74 @@ function ud_memorize_cbx(c) {
   } else {
     $.cookie(words_key[c], 'false');
   }
+}
+
+function first() {
+  const condition_cbx = $.cookie("cbx");
+  const condition_random = $.cookie("random");
+  if (condition_cbx == 'true')
+    cbx.checked = true
+  if (condition_random == 'true')
+    random.checked = true
+  const cookie_i = $.cookie("last")
+  if (cookie_i) i = Number(cookie_i);
+
+  const range_id = document.getElementById('range')
+  const is_memorized = document.getElementById('is_memorized')
+  const memorized_c = document.getElementsByClassName('memorized');
+  let new_element = document.createElement('div');
+  let condition = '';
+
+  new_element.textContent = words[0];
+  new_element.className = 'lesson';
+  is_memorized.appendChild(new_element);
+
+  for (let w in words) {
+    if (words[w] == '-----') {
+      try {
+        let range_c = document.getElementsByClassName('range_c')
+        let range_len = range_c.length - 1;
+
+        let text_content = range_c[range_len].textContent
+        range_c[range_len].innerHTML = text_content + String(words_len - 1)
+      } catch (e) {
+        console.log(e);
+      }
+
+      new_element = document.createElement('p');
+      punctuation.push(words_len)
+      new_element.textContent = `Part ${w} → ${words_len} 〜`;
+      new_element.className = 'range_c';
+      range_id.appendChild(new_element);
+
+      new_element = document.createElement('h4');
+      new_element.innerHTML = w;
+      is_memorized.appendChild(new_element);
+
+    } else {
+      
+      words_len++
+      new_element = document.createElement('div');
+      new_element.innerHTML = `<label for="${w}" onclick="ud_memorize_cbx(${words_len})"><input type="checkbox" class="memorized" id="${w}" />${words_len}: ${w} (${words[w]})</label>`
+      is_memorized.appendChild(new_element);
+      
+      words_key.push(w)
+      words_val.push(words[w])
+      condition = $.cookie(`${w}`);
+      if (condition == 'true') {
+        memorized_c[words_len].checked = true
+        console.log(words_len);
+      }
+    }
+  }
+
+
+  let range_c = document.getElementsByClassName('range_c')
+  let range_len = range_c.length - 1;
+  let text_content = range_c[range_len].textContent
+  range_c[range_len].innerHTML = text_content + String(words_len - 1)
+
+  touch()
 }
 
 first()
