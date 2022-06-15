@@ -507,7 +507,7 @@ function first() {
       words_val.push(words[w])
       condition = $.cookie(`${w}`);
       if (condition == 'true') {
-        memorized_c[words_len].checked = true
+        memorized_c[words_len-1].checked = true
         console.log(words_len);
       }
     }
