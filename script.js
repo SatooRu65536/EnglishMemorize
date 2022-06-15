@@ -277,7 +277,7 @@ let words_val = []
 let notyet_list = []
 let now = true
 let past = now
-let i = -1
+let i = 0
 let c = 0
 
 function touch() {
@@ -461,6 +461,7 @@ function first() {
   if (condition_random == 'true')
     random.checked = true
   const cookie_i = $.cookie("last")
+  console.log('this',cookie_i);
   if (cookie_i) i = Number(cookie_i);
 
   const range_id = document.getElementById('range')
