@@ -287,11 +287,11 @@ function touch() {
     now = true
     check()
   }
-  console.log(i);
 }
 
 function change() {
   n = number.value
+  if (n) n = Number(n)
 
   if (random.checked) {
     $.cookie("random", 'true');
