@@ -142,7 +142,7 @@ const words = {
   "resign from ~": "を辞職する",
   "in protest": "抗議して",
   "on ~ grounds": "の理由で",
-  "civil rights": "公民権",
+  "civil rights": "公民権"
 }
 
 
@@ -290,7 +290,7 @@ function touch() {
 }
 
 function change() {
-  n = Number(number.value)
+  n = number.value
 
   if (random.checked) {
     $.cookie("random", 'true');
@@ -304,8 +304,8 @@ function change() {
     }
   }
 
-  if (n > 0 && n < words_len + 1) {
-    i = n
+  if (n > 0 && n < words_len) {
+    i = n - 1
     number.value = null
   } else if (n) {
     number.value = '1 ~ ' + String(words_len)
@@ -344,14 +344,15 @@ function check() {
 }
 
 function num_disp() {
-  if (i < punctuation[1]) num.innerText = 'Part2-1 (' + i + ')'
-  else if (i < punctuation[2]) num.innerText = 'Part2-2 (' + i + ')'
-  else if (i < punctuation[3]) num.innerText = 'Part2-3 (' + i + ')'
-  else if (i < punctuation[4]) num.innerText = 'Part2-4 (' + i + ')'
-  else if (i < punctuation[5]) num.innerText = 'Part3-1 (' + i + ')'
-  else if (i < punctuation[6]) num.innerText = 'Part3-2 (' + i + ')'
-  else if (i < punctuation[7]) num.innerText = 'Part3-3 (' + i + ')'
-  else num.innerText = 'Part3-4 (' + i + ')'
+  const j = i + 1
+  if (i < punctuation[1]) num.innerText = 'Part2-1 (' + j + ')'
+  else if (i < punctuation[2]) num.innerText = 'Part2-2 (' + j + ')'
+  else if (i < punctuation[3]) num.innerText = 'Part2-3 (' + j + ')'
+  else if (i < punctuation[4]) num.innerText = 'Part2-4 (' + j + ')'
+  else if (i < punctuation[5]) num.innerText = 'Part3-1 (' + j + ')'
+  else if (i < punctuation[6]) num.innerText = 'Part3-2 (' + j + ')'
+  else if (i < punctuation[7]) num.innerText = 'Part3-3 (' + j + ')'
+  else num.innerText = 'Part3-4 (' + j + ')'
 }
 
 function first() {
@@ -364,7 +365,12 @@ function first() {
   i = Number($.cookie("last"));
 
   const range_id = document.getElementById('range')
-  let new_element = document.createElement('p');
+  const is_memorized = document.getElementById('is_memorized')
+  let new_element = document.createElement('div');
+
+  new_element.textContent = words[0];
+  new_element.className = 'lesson';
+  is_memorized.appendChild(new_element);
 
   for (let i in words) {
     if (words[i] == '-----') {
@@ -384,19 +390,43 @@ function first() {
       new_element.className = 'range_c';
       range_id.appendChild(new_element);
 
+      new_element = document.createElement('h4');
+      new_element.innerHTML = i;
+      is_memorized.appendChild(new_element);
+
     } else {
       words_len++
+      new_element = document.createElement('div');
+      new_element.innerHTML = `<input type="checkbox" class="memorized" id="${i}" /> <label for="${i}">${words_len}: ${i} (${words[i]})</label>`
+      is_memorized.appendChild(new_element);
+
       words_key.push(i)
       words_val.push(words[i])
     }
   }
-
   let range_c = document.getElementsByClassName('range_c')
   let range_len = range_c.length - 1;
   let text_content = range_c[range_len].textContent
   range_c[range_len].innerHTML = text_content + String(words_len - 1)
 
   touch()
+}
+
+function memorized_all_click() {
+  const m_label = document.getElementById('memorized_all_label')
+  const c = memorized_all.checked
+  const memorized = document.getElementsByClassName('memorized')
+  if (c) {
+    m_label.innerHTML = '全て外す'
+    for (m in memorized) {
+      memorized[m].checked = true
+    }
+  } else {
+    m_label.innerHTML = '全てチェック'
+    for (m in memorized) {
+      memorized[m].checked = false
+    }
+  }
 }
 
 first()
