@@ -363,7 +363,8 @@ function first() {
     cbx.checked = true
   if (condition_random == 'true')
     random.checked = true
-  i = Number($.cookie("last"));
+  const cookie_i = $.cookie("last")
+  if (cookie_i) i = Number(cookie_i);
 
   const range_id = document.getElementById('range')
   const is_memorized = document.getElementById('is_memorized')
