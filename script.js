@@ -4,6 +4,7 @@ const cbx = document.getElementById('cbx')
 const random = document.getElementById('random')
 const number = document.getElementById('number')
 const num = document.getElementById('num')
+const memorize_cbx = document.getElementById('memorize_cbx')
 
 //頭おかしい
 const words = {
@@ -145,7 +146,6 @@ const words = {
   "civil rights": "公民権"
 }
 
-
 const words_old = {
   'artificial': "人工",
   'intelligence': "知能",
@@ -274,6 +274,7 @@ let punctuation = []
 let words_len = 0
 let words_key = []
 let words_val = []
+let notyet_list = []
 let now = true
 let past = now
 let i = -1
@@ -290,19 +291,43 @@ function touch() {
 }
 
 function change() {
+  memorize_cbx.checked = false
+
   n = number.value
   if (n) n = Number(n)
 
   if (random.checked) {
     $.cookie("random", 'true');
-    i = Math.floor(Math.random() * words_len)
+    ud_memorize_cbxs()
+    if (notyet_list.length > 0) {
+      j = Math.floor(Math.random() * notyet_list.length)
+      i = notyet_list[j]
+    } else {
+      i = 9999
+    }
+
   } else {
     $.cookie("random", 'false');
+    if (i == 9999) i = 0
+    const old_i = i
     i += 1
-    $.cookie("last", i);
-    if (i >= words_len) {
-      i = 0
+    ud_memorize_cbxs()
+
+    while (true) {
+      if (notyet_list.includes(i)) {
+        break
+      }
+      if (i == old_i) {
+        i = 9999
+        break
+      }
+
+      i += 1
+      if (i >= words_len) {
+        i = 0
+      }
     }
+    $.cookie("last", i);
   }
 
   if (n > 0 && n < words_len) {
@@ -318,14 +343,22 @@ function change() {
     $.cookie("cbx", 'true');
     past = true
 
-    let w = words_key[i]
-    word.innerText = w
+    if (i == '9999') {
+      word.innerText = '全て覚えているようです😗'
+    } else {
+      let w = words_key[i]
+      word.innerText = w
+    }
   } else {
     $.cookie("cbx", 'false');
     past = false
 
-    let w = words_val[i]
-    word.innerText = w
+    if (i == '9999') {
+      word.innerText = '全て覚えているようです😗'
+    } else {
+      let w = words_val[i]
+      word.innerText = w
+    }
   }
 
   canswer.innerText = null
@@ -334,8 +367,9 @@ function change() {
 
 function check() {
   canswer.innerText = words_val[i]
-
-  if (past) {
+  if (i == 9999) {
+    canswer.innerText = ''
+  } else if (past) {
     canswer.innerText = words_val[i]
     num_disp()
   } else {
@@ -368,14 +402,16 @@ function first() {
 
   const range_id = document.getElementById('range')
   const is_memorized = document.getElementById('is_memorized')
+  const memorized_c = document.getElementsByClassName('memorized');
   let new_element = document.createElement('div');
+  let condition = '';
 
   new_element.textContent = words[0];
   new_element.className = 'lesson';
   is_memorized.appendChild(new_element);
 
-  for (let i in words) {
-    if (words[i] == '-----') {
+  for (let w in words) {
+    if (words[w] == '-----') {
       try {
         let range_c = document.getElementsByClassName('range_c')
         let range_len = range_c.length - 1;
@@ -388,29 +424,35 @@ function first() {
 
       new_element = document.createElement('p');
       punctuation.push(words_len)
-      new_element.textContent = `Part ${i} → ${words_len} 〜`;
+      new_element.textContent = `Part ${w} → ${words_len} 〜`;
       new_element.className = 'range_c';
       range_id.appendChild(new_element);
 
       new_element = document.createElement('h4');
-      new_element.innerHTML = i;
+      new_element.innerHTML = w;
       is_memorized.appendChild(new_element);
 
     } else {
+      condition = $.cookie(`${w}`);
+      if (condition == 'true') {
+        memorized_c[words_len].checked = true
+      }
+
       words_len++
       new_element = document.createElement('div');
-      new_element.innerHTML = `<input type="checkbox" class="memorized" id="${i}" /> <label for="${i}">${words_len}: ${i} (${words[i]})</label>`
+      new_element.innerHTML = `<label for="${w}" onclick="ud_memorize_cbx(${words_len})"><input type="checkbox" class="memorized" id="${w}" />${words_len}: ${w} (${words[w]})</label>`
       is_memorized.appendChild(new_element);
 
-      words_key.push(i)
-      words_val.push(words[i])
+      words_key.push(w)
+      words_val.push(words[w])
     }
   }
+
+
   let range_c = document.getElementsByClassName('range_c')
   let range_len = range_c.length - 1;
   let text_content = range_c[range_len].textContent
   range_c[range_len].innerHTML = text_content + String(words_len - 1)
-  console.log('ok');
 
   touch()
 }
@@ -429,6 +471,40 @@ function memorized_all_click() {
     for (m in memorized) {
       memorized[m].checked = false
     }
+  }
+}
+
+function memorized() {
+  const memorized_c = document.getElementsByClassName('memorized');
+  if (memorize_cbx.checked) {
+    memorized_c[i + 1].checked = true
+  } else {
+    memorized_c[i + 1].checked = false
+  }
+  ud_memorize_cbx(i)
+}
+
+function ud_memorize_cbxs() {
+  const memorized_c = document.getElementsByClassName('memorized');
+  notyet_list = []
+
+  for (let i = 0; i < memorized_c.length; i++) {
+    if (memorized_c[i].checked) {
+      $.cookie(words_key[i], 'true');
+    } else {
+      $.cookie(words_key[i], 'false');
+      notyet_list.push(i - 1);
+    }
+  }
+}
+
+function ud_memorize_cbx(c) {
+  const memorized_c = document.getElementsByClassName('memorized');
+
+  if (memorized_c[c].checked) {
+    $.cookie(words_key[c], 'true');
+  } else {
+    $.cookie(words_key[c], 'false');
   }
 }
 
