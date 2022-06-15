@@ -281,6 +281,8 @@ let i = -1
 let c = 0
 
 function touch() {
+  look(0);
+
   if (now) {
     now = false
     change()
@@ -438,6 +440,16 @@ function ud_memorize_cbx(c) {
     $.cookie(words_key[c], 'true');
   } else {
     $.cookie(words_key[c], 'false');
+  }
+}
+
+function look(mode) {
+  if (mode == 0) {
+    document.getElementById('is_memorized').style.display = 'none';
+    document.getElementById('look').style.display = 'block';
+  } else {
+    document.getElementById('is_memorized').style.display = 'block';
+    document.getElementById('look').style.display = 'none';
   }
 }
 
