@@ -287,6 +287,7 @@ function touch() {
     now = true
     check()
   }
+  console.log(i);
 }
 
 function change() {
