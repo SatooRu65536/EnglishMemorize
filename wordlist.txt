@@ -1,5 +1,5 @@
-2-1
 -----
+2-1
 awake
 用心深い
 caffein
@@ -36,8 +36,8 @@ pain reliver
 鎮痛剤
 chocolate bar
 板チョコレート
-2-2
 -----
+2-2
 consume
 摂取（消費）する
 unhealthy
@@ -64,8 +64,8 @@ proof
 証拠
 at one's best
 最良の状態で
-2-3
 -----
+2-3
 regularly
 定期的に
 depen
@@ -92,8 +92,8 @@ soft drink
 ソフトドリンク
 in moderation
 適度に
-2-4
 -----
+2-4
 recent
 最近の
 suggest
@@ -124,8 +124,8 @@ it is true (that) ~, but ...
 確かに（本当に）
 This is why ~
 こういうわけで〜
-3-1
 -----
+3-1
 tuberculosis
 結核
 worse
@@ -162,8 +162,8 @@ manage to 'do'
 なんとか〜する
 in spite of ~
 〜にも関わらず
-3-2
 -----
+3-2
 outstanding
 傑出した
 athlete
@@ -192,8 +192,8 @@ As a result
 その結果
 far away
 遠くで
-3-3
 -----
+3-3
 solid
 個体の
 cell
@@ -228,8 +228,8 @@ instead of
 の代わりに
 the American Bed Cross
 アメリカ赤十字社
-3-4
 -----
+3-4
 donate
 を提供する
 dislike
