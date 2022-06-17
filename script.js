@@ -43,7 +43,7 @@ const words = {
   "at one's best": "最良の状態で",
   "2-3": "-----",
   "regularly": "定期的に",
-  "depen": "依存",
+  "depend": "依存",
   "negative": "良くない",
   "headache": "頭痛",
   "reduce": "を減らす",
